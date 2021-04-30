@@ -1,0 +1,112 @@
+class Wheel implements Cloneable{
+    int d;
+int asdq;
+    Wheel (int di){
+        d = di;
+    }
+public     int  setd(    int qwe)
+{
+d=qwe;
+}
+public void getd()
+{
+return d;
+}
+    public Wheel clone() throws CloneNotSupportedException
+    {
+        return (Wheel)super.clone();
+    }
+public boolean equals( Object obj) {
+if (this == obj)
+return true;
+if (obj == null)
+return false;
+if (getClass() != obj.getClass())
+return false;
+Wheel  other=(Wheel )obj;
+if(this.d!=other.d||this.asdq!=other.asdq)
+return false;
+return true;
+}
+return true;
+if (obj == null)
+return false;
+if (getClass() != obj.getClass())
+return false;
+Wheel  other=(Wheel )obj;
+if(this.d!=other.d)
+return false;
+return true;
+}
+public int hashcode() {
+int result=17;
+result=37*result + d;
+result=37*result + asdq;
+return result;
+}
+result=37*result + d;
+return result;
+}
+}
+public class Bike implements Cloneable {
+    int wheelCount;
+    Wheel w;
+    Bike(int wCount, int wDiameter) {
+        wheelCount = wCount;
+        w = new Wheel(wDiameter);
+    }
+public     Wheel  setw(    Wheel qwe)
+{
+w=qwe;
+}
+public void getwheelCount()
+{
+return wheelCount;
+}
+public boolean equals( Object obj) {
+if (this == obj)
+return true;
+if (obj == null)
+return false;
+if (getClass() != obj.getClass())
+return false;
+Bike  other=(Bike )obj;
+if(this.wheelCount!=other.wheelCount||this.w!=other.w)
+return false;
+return true;
+}
+return true;
+if (obj == null)
+return false;
+if (getClass() != obj.getClass())
+return false;
+Bike  other=(Bike )obj;
+if(this.wheelCount!=other.wheelCount||this.w!=other.w)
+return false;
+return true;
+}
+public int hashcode() {
+int result=17;
+result=37*result + wheelCount;
+result=result+Objects.hash(w);
+return result;
+}
+result=37*result + wheelCount;
+return result;
+}
+    public Bike clone() throws CloneNotSupportedException
+    {
+        Wheel s=(Wheel)w.clone();
+        Bike t=(Bike)super.clone();
+        t.w=s;
+        return t;
+    }
+    public static void main (String[] arg) throws CloneNotSupportedException{
+        Bike bike1 = new Bike(2, 26);
+        Bike bike2 = (Bike) bike1.clone();
+        bike1.wheelCount = 2;
+        bike1.w.d = 26;
+        System.out.println (bike2.wheelCount);
+        System.out.println (bike2.w.d);
+    }
+}

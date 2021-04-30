@@ -1,0 +1,82 @@
+class Wheel implements Cloneable{
+    int d;
+    Wheel (int di){
+        d = di;
+    }
+    public void setd(int t)
+    {
+    d=t;
+    } 
+    public int getd()
+    {
+    return d;
+    } 
+    public Wheel clone() throws CloneNotSupportedException
+    {
+        return (Wheel)super.clone();
+    }
+    public boolean equals(Wheel a)
+    {
+        if(this==a)
+            return true;
+        if(a==null)
+            return false;
+        if (getClass() != a.getClass())
+            return false;
+        if(this.d==a.d)
+            return true;
+        else return false;
+    }
+    public int hashCode()
+    {
+        return d;
+    }
+}
+public class Bike implements Cloneable {
+    int wheelCount;
+    Wheel w;
+    Bike(int wCount, int wDiameter) {
+        wheelCount = wCount;
+        w = new Wheel(wDiameter);
+    }
+    public Wheel setw(Wheel s)
+    {
+        w=s;
+    }
+    public int getwheelCount()
+    {
+        return wheelCount;
+    }
+    public boolean equals(Bike a)
+    {
+        if(this==a)
+            return true;
+        if(a==null)
+            return false;
+        if (getClass() != a.getClass())
+            return false;
+        if(this.wheelCount==a.wheelCount&&this.w.d==a.w.d)
+            return true;
+        else return false;
+    }
+    public int hashCode()
+    {
+        return w.d*wheelCount;
+    }
+    public Bike clone() throws CloneNotSupportedException
+    {
+        Wheel s=(Wheel)w.clone();
+        Bike t=(Bike)super.clone();
+        t.w=s;
+        return t;
+    }
+    public static void main (String[] arg) throws CloneNotSupportedException{
+        Bike bike1 = new Bike(2, 26);
+        Bike bike2 = (Bike) bike1.clone();
+        bike1.wheelCount = 2;
+        bike1.w.d = 26;
+        System.out.println (bike2.equals(bike1));
+        System.out.println (bike2.wheelCount);
+        System.out.println (bike2.w.d);
+    }
+}
